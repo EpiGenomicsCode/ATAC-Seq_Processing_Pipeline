@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH --job-name=installing_softwares_job
+#SBATCH --output=installing_softwares.out
+#SBATCH --error=installing_softwares.err
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=50G
+#SBATCH --time=02:00:00
+#SBATCH --partition=open
+
+
+ENV_NAME="processing_atac-seq"
+PYTHON_VERSION="3.8"
+PACKAGES="bioconda fastqc skewer bwa samtools bcftools macs2"
+
+
+echo "Creating conda environment: $ENV_NAME"
+conda create --name $ENV_NAME python=$PYTHON_VERSION -y
+
+echo "Activating environment: $ENV_NAME"
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate $ENV_NAME
+
+echo "Installing packages: $PACKAGES"
+conda install -c $PACKAGES -y
+
+echo "Deactivating environment"
+conda deactivate
