@@ -1,0 +1,36 @@
+#!/bin/bash
+#SBATCH --job-name=bwa_preprocess_job
+#SBATCH --output=bwa_preprocess.out
+#SBATCH --error=bwa_preprocess.err
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=50G
+#SBATCH --time=02:00:00
+#SBATCH --partition=open
+
+
+source /storage/home/kvg5726/miniconda3/etc/profile.d/conda.sh
+conda activate processing_atac-seq
+
+# Specify the destination directory 
+DEST_DIR="/Input/Your/Directory"
+
+# Create the directory if it doesn't exist
+mkdir -p "$DEST_DIR"
+
+# Navigate to the destination directory
+cd "$DEST_DIR" || exit
+
+# Download the hg38 genome
+echo "Downloading hg38.fa.gz..."
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+
+# Unzip the file
+echo "Unzipping hg38.fa.gz..."
+gunzip hg38.fa.gz
+
+# Index the fasta file using BWA
+echo "Indexing hg38.fa using bwa..."
+bwa index hg38.fa
+
+echo "Download, unzip, and indexing complete."
