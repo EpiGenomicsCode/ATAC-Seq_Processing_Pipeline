@@ -22,6 +22,7 @@ mkdir -p "$DEST_DIR"
 cd "$DEST_DIR" || exit
 
 # Download the hg38 genome
+# Change to you reference genome 
 echo "Downloading hg38.fa.gz..."
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
 
