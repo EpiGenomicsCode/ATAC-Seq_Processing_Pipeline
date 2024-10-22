@@ -18,7 +18,7 @@ skewer_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/skewer_output"
 bwa_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/bwa_output"
 post_align_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/post_align_output"
 reference_genome="/scratch/kvg5726/ATAC-seq-pipline/reads/hg38.fa"
-macs2_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/macs2_output"   
+macs3_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/macs3_output"   
 
 
 post_alignment_script="/scratch/kvg5726/ATAC-seq-pipline/scripts/atac-pip/post_alignment.py"
