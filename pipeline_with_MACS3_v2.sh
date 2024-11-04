@@ -8,7 +8,7 @@
 #SBATCH --time=02:00:00
 #SBATCH --partition=open
 
-# source /storage/home/kvg5726/miniconda3/etc/profile.d/conda.sh
+# source path/to/conda.sh
 # conda activate processing_atac-seq
 
 # Define the input directory and output directory
