@@ -9,7 +9,7 @@
 #SBATCH --partition=open
 
 
-source /storage/home/kvg5726/miniconda3/etc/profile.d/conda.sh
+source path/to/conda.sh
 conda activate processing_atac-seq
 
 # Specify the destination directory 
