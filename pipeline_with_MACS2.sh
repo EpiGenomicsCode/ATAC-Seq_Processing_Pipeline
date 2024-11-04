@@ -12,16 +12,16 @@ source /storage/home/kvg5726/miniconda3/etc/profile.d/conda.sh
 conda activate processing_atac-seq
 
 # Define the input directory and output directory
-input_dir="/scratch/kvg5726/ATAC-seq-pipline/reads"
-fastqc_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/fastqc_output"
-skewer_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/skewer_output"
-bwa_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/bwa_output"
-post_align_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/post_align_output"
-reference_genome="/scratch/kvg5726/ATAC-seq-pipline/reads/hg38.fa"
-macs2_output_dir="/scratch/kvg5726/ATAC-seq-pipline/reads/macs2_output"   
+input_dir="path/to/input"
+fastqc_output_dir="path/to/fastqc_output"
+skewer_output_dir="path/to/skewer_output"
+bwa_output_dir="path/to/bwa_output"
+post_align_output_dir="path/to/post_align_output"
+reference_genome="path/to/hg38.fa"
+macs2_output_dir="path/to/macs2_output"   
 
 
-post_alignment_script="/scratch/kvg5726/ATAC-seq-pipline/scripts/atac-pip/post_alignment.py"
+post_alignment_script="path/to/post_alignment.py"
 
 ## FASTQC 
 
