@@ -3,8 +3,8 @@ import subprocess
 import time
 
 ## Chang input directories 
-chrM_file = "path/to/chrM.bed"
-picard = "path/to/picard.jar"
+chrM_file = "/storage/home/zmz5327/work/tools/ATAC-Seq_Processing_Pipeline/utility/chrM.bed"
+picard = "/storage/home/zmz5327/work/tools/ATAC-Seq_Processing_Pipeline/utility/picard.jar"
 
 def alignment_adjustment(input_bam:str, sample_name: str, output_dir:str) -> None:
 
@@ -33,9 +33,13 @@ def alignment_adjustment(input_bam:str, sample_name: str, output_dir:str) -> Non
     ## reindex the new bam file
     subprocess.run(f"samtools index {new_bam}", shell=True, check=True)
 
+    # add RG group
+    cmd_add_rg = f'java -jar {picard} AddOrReplaceReadGroups -I {new_bam} -O {output_dir}/{sample_name}_noMT_rg.bam -LB lib1 -PL Illumina -SM atac -PU unit1'
+    subprocess.run(cmd_add_rg, shell=True, check=True)
+    new_bam = f'{output_dir}/{sample_name}_noMT_rg.bam'
 
     # remove duplicate reads
-    cmd_dups_removal = f'java -jar {picard} MarkDuplicates I={new_bam} O={output_dir}/{sample_name}_noMT_noDups.bam M={sample_name}_dups.txt REMOVE_DUPLICATES=true'
+    cmd_dups_removal = f'java -jar {picard} MarkDuplicates -I {new_bam} -O {output_dir}/{sample_name}_noMT_noDups.bam -M {sample_name}_dups.txt -REMOVE_DUPLICATES true'
     subprocess.run(cmd_dups_removal, shell=True, check=True)
 
     # remove non-unique alignments (set minimum mapping score as 10)
