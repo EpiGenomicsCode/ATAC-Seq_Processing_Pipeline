@@ -3,8 +3,8 @@ import subprocess
 import time
 
 ## Chang input directories 
-chrM_file = "/storage/home/zmz5327/work/tools/ATAC-Seq_Processing_Pipeline/utility/chrM.bed"
-picard = "/storage/home/zmz5327/work/tools/ATAC-Seq_Processing_Pipeline/utility/picard.jar"
+chrM_file = "path/to/chrM.bed"
+picard = "path/to/picard.jar"
 
 def alignment_adjustment(input_bam:str, sample_name: str, output_dir:str) -> None:
 
